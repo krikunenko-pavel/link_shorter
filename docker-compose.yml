@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  shorter:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: release
+    environment:
+      REDIS_DSN: redis://redis/
+      SHORTER_URL: http://127.0.0.1:8000
+    ports:
+      - "8000:8000"
+  redis:
+    image: redis
